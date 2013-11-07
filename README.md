@@ -1,4 +1,4 @@
-Traducto [![Build Status](https://secure.travis-ci.org/alchimikweb/traducto.png?branch=master)](http://travis-ci.org/alchimikweb/traducto) [![Code Climate](https://codeclimate.com/github/ma2gedev/breadcrumble.png)](https://codeclimate.com/github/alchimikweb/traducto)
+Traducto [![Build Status](https://secure.travis-ci.org/alchimikweb/traducto.png?branch=master)](http://travis-ci.org/alchimikweb/traducto) [![Code Climate](https://codeclimate.com/github/alchimikweb/traducto.png)](https://codeclimate.com/github/alchimikweb/traducto) [![Coverage Status](https://coveralls.io/repos/alchimikweb/traducto/badge.png)](https://coveralls.io/r/alchimikweb/traducto)
 ===============
 
 Rails helpers collection to simplify the localization code.
