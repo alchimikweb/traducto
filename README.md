@@ -1,4 +1,4 @@
-Traducto
+Traducto [![Build Status](https://secure.travis-ci.org/alchimikweb/traducto.png?branch=master)](http://travis-ci.org/alchimikweb/traducto)
 ===============
 
 Rails helpers collection to simplify the localization code.
