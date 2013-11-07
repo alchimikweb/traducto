@@ -38,6 +38,8 @@ The lazy lookup will check three more path. Here's the full stack of checkup if 
           title: "Title"
 ```
 
+This is for text in the persons view that is only present in the index action.
+
 ```yaml
   en:
     views:
@@ -45,11 +47,15 @@ The lazy lookup will check three more path. Here's the full stack of checkup if 
         title: "Title"
 ```
 
+This is for text in the persons view that can be found in any actions.
+
 ```yaml
   en:
     views:
       title: "Title"
 ```
+
+This is for text that is used in any views.
 
 ```yaml
   # Rails default
@@ -58,6 +64,8 @@ The lazy lookup will check three more path. Here's the full stack of checkup if 
       index:
         title: "Title"
 ```
+
+The reason I add the ```views``` key in front of ```persons``` is to clearly separate the translations of the views, models and helpers.
 
 ### Formatting
 You can also provide the format options to wrap the content by paragraphs.
@@ -73,6 +81,9 @@ You can also provide the format options to wrap the content by paragraphs.
 ```
 
 ```ruby
+  t('description.intro', format: nil)
+  #--> Let me start by
+
   t('description.intro', format: :text)
   #--> <p>Let me start by</p>
 
@@ -84,4 +95,4 @@ You can also provide the format options to wrap the content by paragraphs.
 Copyright
 ---------
 
-Copyright (c) 2013 Alchimik. See LICENSE for further details.
+Copyright (c) 2013 [Alchimik](http://www.alchimik.com). See [LICENSE](LICENCE) for further details.
