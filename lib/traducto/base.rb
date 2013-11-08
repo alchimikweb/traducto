@@ -54,7 +54,7 @@ module Traducto
     def format_text
       @text = [@text] if not @text.is_a? Array
 
-      @text = @text.map { |x| content_tag(:p, x) }.join.html_safe
+      @text = @text.map { |x| content_tag(:p, x.html_safe) }.join.html_safe
     end
 
     def i18n_translate(key)
