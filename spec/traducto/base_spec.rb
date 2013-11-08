@@ -54,6 +54,14 @@ describe Traducto::Base do
     context "with the key intro having the value ['par1', 'par2', 'par3']" do
       before { I18n.stub('translate').with('intro', anything()).and_return(['par1', 'par2', 'par3']) }
 
+      context "when translating the key 'intro' without a text format" do
+        before { @base = Traducto::Base.new(ActionView::Base.new) }
+
+        subject { @base.translate('intro') }
+
+        it { should eql "par1\npar2\npar3" }
+      end
+
       context "when translating the key 'intro' with a text format" do
         before { @base = Traducto::Base.new(ActionView::Base.new) }
 

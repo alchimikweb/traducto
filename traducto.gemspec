@@ -3,7 +3,7 @@ Gem::Specification.new do |gem|
   gem.description = "Rails helpers collection to simplify the localization code."
   gem.summary     = "Rails helpers collection to simplify the localization code."
   gem.homepage    = "https://github.com/alchimikweb/traducto"
-  gem.version     = "1.0.0"
+  gem.version     = "1.0.1"
   gem.licenses    = ["MIT"]
 
   gem.authors     = ["Sebastien Rosa"]
@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.test_files  = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "rails", ['>= 4.0.0']
+  gem.add_dependency "rails", ['>= 3.0.0']
   gem.add_development_dependency "sqlite3"
   gem.add_development_dependency "rspec-rails"
   gem.add_development_dependency "simplecov"

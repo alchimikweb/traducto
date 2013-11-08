@@ -21,7 +21,7 @@ module Traducto
 
       i18n_translate @base_key if translation_missing?
 
-      format_text if format?
+      format
 
       return @text.html_safe
     end
@@ -36,8 +36,19 @@ module Traducto
       request[:controller]
     end
 
+    def format
+      case @options[:format]
+        when :text then format_text
+        else format_base
+      end
+    end
+
     def format?
       @options[:format] ? true : false
+    end
+
+    def format_base
+      @text = @text.join("\n") if @text.is_a? Array
     end
 
     def format_text
