@@ -43,10 +43,6 @@ module Traducto
       end
     end
 
-    def format?
-      @options[:format] ? true : false
-    end
-
     def format_base
       @text = @text.join("\n") if @text.is_a? Array
     end
