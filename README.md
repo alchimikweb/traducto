@@ -1,4 +1,4 @@
-Traducto [![Build Status](https://secure.travis-ci.org/alchimikweb/traducto.png?branch=master)](http://travis-ci.org/alchimikweb/traducto) [![Code Climate](https://codeclimate.com/repos/527c039556b10201a000874c/badges/67a2619a2ba5c6777c81/gpa.png)](https://codeclimate.com/repos/527c039556b10201a000874c/feed) [![Coverage Status](https://coveralls.io/repos/alchimikweb/traducto/badge.png)](https://coveralls.io/r/alchimikweb/traducto) [![Gem Version](https://badge.fury.io/rb/traducto.png)](http://badge.fury.io/rb/traducto)
+Traducto [![Build Status](https://secure.travis-ci.org/alchimikweb/traducto.png?branch=master)](http://travis-ci.org/alchimikweb/traducto) [![Code Climate](https://codeclimate.com/github/alchimikweb/traducto.png)](https://codeclimate.com/github/alchimikweb/traducto) [![Coverage Status](https://coveralls.io/repos/alchimikweb/traducto/badge.png)](https://coveralls.io/r/alchimikweb/traducto) [![Gem Version](https://badge.fury.io/rb/traducto.png)](http://badge.fury.io/rb/traducto)
 ===============
 
 Rails helpers collection to simplify the localization code.
@@ -82,13 +82,13 @@ You can also provide the format options to wrap the content by paragraphs.
 
 ```ruby
   t('description.intro', format: nil)
-  #--> Let me start by
+  # => Let me start by
 
   t('description.intro', format: :text)
-  #--> <p>Let me start by</p>
+  # => <p>Let me start by</p>
 
   t('description.main', format: :text)
-  #--> <p>A lot of ...</p><p>Paragraphs that needs to be ...</p><p>Separated by p tags.</p>
+  # => <p>A lot of ...</p><p>Paragraphs that needs to be ...</p><p>Separated by p tags.</p>
 ```
 
 
