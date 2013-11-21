@@ -2,10 +2,12 @@ ENV["RAILS_ENV"] ||= 'test'
 
 require 'simplecov'
 require 'simplecov-rcov-text'
+require 'coveralls'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::RcovTextFormatter
+  SimpleCov::Formatter::RcovTextFormatter,
+  Coveralls::SimpleCov::Formatter
 ]
 SimpleCov.start do
   add_filter "spec/dummy"
@@ -18,10 +20,7 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
-require 'coveralls'
-Coveralls.wear!
-
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir["./spec/support/**/*.rb"].sort.each {|f| require f }
 
 RSpec.configure do |config|
   config.mock_with :rspec
