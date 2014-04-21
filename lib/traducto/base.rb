@@ -23,7 +23,11 @@ module Traducto
 
       format
 
-      return @text.html_safe
+      if @text.is_a? String
+        @text.html_safe
+      else
+        @text
+      end
     end
 
     private

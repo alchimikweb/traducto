@@ -3,7 +3,7 @@ Gem::Specification.new do |gem|
   gem.description = "Rails helpers collection to simplify the localization code."
   gem.summary     = "Rails helpers collection to simplify the localization code."
   gem.homepage    = "https://github.com/alchimikweb/traducto"
-  gem.version     = "1.0.3"
+  gem.version     = "1.0.4"
   gem.licenses    = ["MIT"]
 
   gem.authors     = ["Sebastien Rosa"]
