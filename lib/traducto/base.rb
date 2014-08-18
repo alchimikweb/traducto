@@ -43,12 +43,20 @@ module Traducto
     def format
       case @options[:format]
         when :text then format_text
+        when :list then format_list
         else format_base
       end
     end
 
     def format_base
       @text = @text.join("\n") if @text.is_a? Array
+    end
+
+    def format_list
+      @text = [@text] if not @text.is_a? Array
+
+      @text = @text.map { |x| content_tag(:li, x.html_safe) }.join.html_safe
+      @text = content_tag(:ul, @text)
     end
 
     def format_text

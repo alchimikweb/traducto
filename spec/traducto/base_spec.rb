@@ -71,5 +71,17 @@ describe Traducto::Base do
       end
     end
 
+    context "with the key task_list having the value ['item1', 'item2', 'item3']" do
+      before { I18n.stub('translate').with('task_list', anything()).and_return(['item1', 'item2', 'item3']) }
+
+      context "when translating the key 'task_list' with a list format" do
+        before { @base = Traducto::Base.new(ActionView::Base.new) }
+
+        subject { @base.translate('task_list', format: :list) }
+
+        it { should eql '<ul><li>item1</li><li>item2</li><li>item3</li></ul>' }
+      end
+    end
+
   end
 end
