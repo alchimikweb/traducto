@@ -27,7 +27,7 @@ The lazy lookup will check three more path. Here's the full stack of checkup if 
 ```erb
   <%# app/views/persons/index.html.erb %>
 
-  t('.title')
+  <% t('.title') %>
 ```
 
 ```yaml
@@ -66,6 +66,16 @@ This is for text that is used in any views.
 ```
 
 The reason I add the ```views``` key in front of ```persons``` is to clearly separate the translations of the views, models and helpers.
+
+### Recycle text for particular action
+If you want to reuse text of an action in a different context, for instance, if you are in the action create
+but you want to use the text of the new action. You can call the following on top of your view :
+
+```erb
+  <%# app/views/persons/create.html.erb %>
+
+  <% use_translations_of 'new' %>
+```
 
 ### Formatting
 You can also provide the format options to wrap the content by paragraphs.
