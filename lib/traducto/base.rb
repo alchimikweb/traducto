@@ -12,6 +12,12 @@ module Traducto
       @rails_helpers = rails_helpers
 
       init_state
+
+      set_base_actions
+    end
+
+    def add_action(action)
+      @actions << action
     end
 
     def translate(key, options={})
@@ -30,11 +36,8 @@ module Traducto
       end
     end
 
-    private
 
-    def action
-      request[:action]
-    end
+  private
 
     def controller
       request[:controller]
@@ -81,9 +84,25 @@ module Traducto
     end
 
     def lazy_translate
-      i18n_translate "views.#{controller}.#{action}#{@base_key}"
+      @actions.each do |action|
+        i18n_translate "views.#{controller}.#{action}#{@base_key}" if translation_missing?
+      end
       i18n_translate "views.#{controller}#{@base_key}" if translation_missing?
       i18n_translate "views#{@base_key}" if translation_missing?
+    end
+
+    def set_base_actions
+      @actions = []
+
+      if request
+        @actions = [request[:action]]
+
+        if request[:action] == 'create'
+          @actions << 'new'
+        elsif request[:action] == 'update'
+          @actions << 'edit'
+        end
+      end
     end
 
     def translation_missing?

@@ -8,5 +8,11 @@ module Traducto::Helpers
     return @traducto.translate(key, options)
   end
 
+  def use_translations_of(action)
+    @traducto ||= Traducto::Base.new(self)
+
+    @traducto.add_action action
+  end
+
   ::ActionView::Base.send :include, self
 end
