@@ -3,56 +3,56 @@ require 'spec_helper'
 describe Traducto::Base do
 
   describe "#translate" do
-    before { I18n.stub('translate').and_return('') }
+    before { allow(I18n).to receive_messages(translate: '') }
 
     context "with the key views.persons.index.welcome having a 'Hello!' value" do
-      before { I18n.stub('translate').with('views.persons.index.welcome', anything()).and_return('Hello!') }
+      before { allow(I18n).to receive(:translate).with('views.persons.index.welcome', anything()) { 'Hello!' } }
 
       context "when calling from persons#index" do
         before do
           rails_helper = double()
-          rails_helper.stub(:request).and_return({ controller: 'persons', action: 'index' })
+          allow(rails_helper).to receive_messages(request: { controller: 'persons', action: 'index' })
 
           @base = Traducto::Base.new(rails_helper)
         end
 
         context "when asking the key 'views.persons.index.welcome'" do
-          specify { @base.translate('views.persons.index.welcome').should eql 'Hello!' }
+          specify { expect(@base.translate('views.persons.index.welcome')).to eql 'Hello!' }
         end
 
         context "when asking the key 'persons.index.welcome'" do
-          specify { @base.translate('persons.index.welcome').should eql '' }
+          specify { expect(@base.translate('persons.index.welcome')).to eql '' }
         end
 
         context "when asking the key '.welcome'" do
-          specify { @base.translate('.welcome').should eql 'Hello!' }
+          specify { expect(@base.translate('.welcome')).to eql 'Hello!' }
         end
       end
 
       context "when calling from persons#show" do
         before do
           rails_helper = double()
-          rails_helper.stub(:request).and_return({ controller: 'persons', action: 'show' })
+          allow(rails_helper).to receive_messages(request: { controller: 'persons', action: 'show' })
 
           @base = Traducto::Base.new(rails_helper)
         end
 
         context "when asking the key '.welcome'" do
-          specify { @base.translate('.welcome').should eql '' }
+          specify { expect(@base.translate('.welcome')).to eql '' }
         end
 
         context "with the key views.persons.title having a 'Human' value" do
-          before { I18n.stub('translate').with('views.persons.title', anything()).and_return('Human') }
+          before { allow(I18n).to receive(:translate).with('views.persons.title', anything()) { 'Human' } }
 
           context "when asking the key '.title'" do
-            specify { @base.translate('.title').should eql 'Human' }
+            specify { expect(@base.translate('.title')).to eql 'Human' }
           end
         end
       end
     end
 
     context "with the key intro having the value ['par1', 'par2', 'par3']" do
-      before { I18n.stub('translate').with('intro', anything()).and_return(['par1', 'par2', 'par3']) }
+      before { allow(I18n).to receive(:translate).with('intro', anything()) { ['par1', 'par2', 'par3'] } }
 
       context "when translating the key 'intro' without a text format" do
         before { @base = Traducto::Base.new(ActionView::Base.new) }
@@ -72,7 +72,7 @@ describe Traducto::Base do
     end
 
     context "with the key task_list having the value ['item1', 'item2', 'item3']" do
-      before { I18n.stub('translate').with('task_list', anything()).and_return(['item1', 'item2', 'item3']) }
+      before { allow(I18n).to receive(:translate).with('task_list', anything()) { ['item1', 'item2', 'item3'] } }
 
       context "when translating the key 'task_list' with a list format" do
         before { @base = Traducto::Base.new(ActionView::Base.new) }

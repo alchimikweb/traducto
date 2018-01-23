@@ -40,7 +40,7 @@ module Traducto
   private
 
     def controller
-      request[:controller]
+      request[:controller].gsub('/', '.')
     end
 
     def format
